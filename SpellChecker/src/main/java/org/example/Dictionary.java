@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Dictionary {
-    final static String FILEPATH = "/Users/morgenjohnson/IdeaProjects/SpellChecker/src/main/resources/dictionary.txt";
+    final static String FILEPATH = "/Users/morgenjohnson/IdeaProjects/PracticeProjects/SpellChecker/src/main/resources/dictionary.txt";
 
     public static Set<String> load() throws IOException {
          Set<String> dictionarySet = new HashSet<>();

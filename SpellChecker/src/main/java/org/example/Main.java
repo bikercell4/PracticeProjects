@@ -1,14 +1,25 @@
 package org.example;
 
+import org.apache.commons.cli.*;
+
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
+        CommandLineParser parser = new DefaultParser();
+
+        Options options = new Options();
+
+        options.addOption("i", true, "input file path");
+
+        CommandLine cmd = parser.parse(options, args);
+
         //      try {
         Set<String> dictionarySet = Dictionary.load();
-        Set<String> inputSet = Input.loadInput(args[0]);
+        Set<String> inputSet = Input.loadInput(cmd.getOptionValue("i"));
+        //Set<String> inputSet = Input.loadInput(args[0]);
         Set<String> nonDictionaryWords = new HashSet<>();
         for (String word : inputSet) {
             if (!dictionarySet.contains(word)) {
