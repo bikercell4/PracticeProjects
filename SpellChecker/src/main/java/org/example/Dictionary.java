@@ -1,8 +1,6 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,8 +9,9 @@ public class Dictionary {
 
     public static Set<String> load() throws IOException {
          Set<String> dictionarySet = new HashSet<>();
-
-        try (BufferedReader br = new BufferedReader(new FileReader(FILEPATH))) {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
+        try (InputStream is = classloader.getResourceAsStream("dictionary.txt");
+             BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {
 
             String line;
             while ((line = br.readLine()) != null) {
