@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Dictionary {
@@ -19,6 +20,18 @@ public class Dictionary {
             }
         }
             return dictionarySet;
+    }
+    public static boolean isFiveLetters(String word) {
+//        if (word.length() == 5) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+        return word.length() == 5;
+    }
+    public static List<String> getFiveLetterWords() throws IOException {
+       // return load().stream().filter(word-> isFiveLetters(word)).toList();
+        return load().stream().filter(Dictionary::isFiveLetters).toList();
     }
 }
 
